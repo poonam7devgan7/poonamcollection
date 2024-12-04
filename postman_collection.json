@@ -22,7 +22,7 @@
 							"});\r",
 							"\r",
 							"\r",
-							"pm.test(\"Response time is less than 5000ms\", function () {\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
 							"  pm.expect(pm.response.responseTime).to.be.below(5000);\r",
 							"});\r",
 							"\r",
@@ -62,8 +62,8 @@
 							"  \r",
 							"    pm.expect(responseData).to.not.have.property('invalidField');\r",
 							"});\r",
-							"pm.test(\"Response time is less than 2000ms\", function () {\r",
-							"  pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -86,7 +86,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"name\": \"heho\",\r\n    \"email\": \"heho@gmail.com\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"active\"\r\n}",
+					"raw": "{   \r\n    \"name\": \"hello user\",\r\n    \"email\": \"hellouser@gmail.com\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"active\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,22 +111,22 @@
 						"exec": [
 							"// Test for status code\r",
 							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.status(2000);\r",
 							"});\r",
 							"\r",
 							"// Test for response time\r",
-							"pm.test(\"Response time is less than 5000ms\", function () {\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
 							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
 							"});\r",
-							"// Test for specific property value in the response body\r",
-							"pm.test(\"Verify the name in the response body\", function () {\r",
-							"    pm.expect(pm.response.json()[0].name).to.equal(\"PoonamDevggaan\");\r",
-							"});\r",
+							"\r",
 							"// Test for response body not empty\r",
 							"pm.test(\"Response body is not empty\", function () {\r",
 							"    pm.expect(pm.response.json()).not.to.be.empty;\r",
 							"});\r",
-							""
+							"// Test for response body to be an empty array\r",
+							"pm.test(\"Response body is an empty array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.eql([]);\r",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -187,12 +187,12 @@
 							"\r",
 							"// Test Case 2: Validate the response body contains the updated user's name\r",
 							"pm.test(\"Response body contains updated user's name\", function () {\r",
-							"    pm.expect(pm.response.json().data.name).to.equal(\"xyz\");\r",
+							"    pm.expect(pm.response.json().data.name).to.equal(\"PoonamDevgan\");\r",
 							"});\r",
 							"\r",
 							"// Test Case 3: Validate the response body contains the updated user's email\r",
 							"pm.test(\"Response body contains updated user's email\", function () {\r",
-							"    pm.expect(pm.response.json().data.email).to.equal(\"xyz@gmail.com\");\r",
+							"    pm.expect(pm.response.json().data.email).to.equal(\"poonam.devgan@nagarro.commm\");\r",
 							"});\r",
 							"\r",
 							"// Test Case 4: Validate the response body contains the updated user's gender\r",
@@ -221,7 +221,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \r\n    \"name\": \"xyz\",\r\n    \"email\": \"xyz@gmail.com\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"inactive\"\r\n}",
+					"raw": "{   \r\n    \r\n    \"name\": \"PoonamDevgan\",\r\n    \"email\": \"poonam.devgan@nagarro.commm\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"inactive\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -229,7 +229,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://gorest.co.in/public/v2/users/7561739\n",
+					"raw": "https://gorest.co.in/public/v2/users/7564546",
 					"protocol": "https",
 					"host": [
 						"gorest",
@@ -240,7 +240,7 @@
 						"public",
 						"v2",
 						"users",
-						"7561739\n"
+						"7564546"
 					]
 				}
 			},
@@ -261,17 +261,19 @@
 							"// Test Case 2: Verify the response body contains the correct user id\r",
 							"pm.test(\"Response body contains correct user id\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.id).to.eql(7562588);\r",
+							"    pm.expect(jsonData.data.id).to.eql(7559975);\r",
 							"});\r",
 							"\r",
 							"// Test Case 3: Verify the response body contains the correct user email\r",
 							"pm.test(\"Response body contains correct user email\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.email).to.eql(\"poonam.dddevgan@nagarro.com\");\r",
+							"    pm.expect(jsonData.data.email).to.eql(\"poonam.devgan@nagarro.commm\");\r",
 							"});\r",
-							"// Test Case 4: Verify the response time is less than 2000ms\r",
-							"pm.test(\"Response time is less than 2000ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"\r",
+							"// Test Case 4: Verify the response body contains the correct user status\r",
+							"pm.test(\"Response body contains correct user status\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.status).to.eql(\"active\");\r",
 							"});\r",
 							""
 						],
@@ -298,7 +300,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"name\": \"heho\",\r\n    \"email\": \"heho@gmail.com\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"active\"\r\n}",
+					"raw": "{   \r\n    \"id\": 7546099,\r\n    \"name\": \"PoonamDevgan\",\r\n    \"email\": \"poonam.devgan@nagarro.commm\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"active\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -306,7 +308,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://gorest.co.in/public/v2/users/7564866",
+					"raw": "https://gorest.co.in/public/v2/users/7559975",
 					"protocol": "https",
 					"host": [
 						"gorest",
@@ -317,7 +319,49 @@
 						"public",
 						"v2",
 						"users",
-						"7564866"
+						"7559975"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6f7145042e5e9f0755776c1a75d0c713f9cef1a3a7ccffd78b1d10312638e4c6",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"id\": 7546099,\r\n    \"name\": \"PoonamDevgan\",\r\n    \"email\": \"poonam.devgan@nagarro.commm\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"active\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/7559975",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"7559975"
 					]
 				}
 			},
@@ -360,11 +404,8 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -386,7 +427,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"id\": 7564546,\r\n    \"name\": \"Poonam Devgan\",\r\n    \"email\": \"poonam.devgan@nagarro.com\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"active\"\r\n}",
+					"raw": "{   \r\n    \"id\": 7546499,\r\n    \"name\": \"Poonam Devgan\",\r\n    \"email\": \"poonam.devgan@nagarro.com\",\r\n    \"gender\": \"female\",\r\n    \"status\": \"active\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
